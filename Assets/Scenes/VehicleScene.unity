@@ -572,7 +572,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 104122, guid: aea2a6cdcc9d7944090d528486ebaee1, type: 3}
       propertyPath: m_Name
-      value: vehicle
+      value: Vehicle
       objectReference: {fileID: 0}
     - target: {fileID: 489324, guid: aea2a6cdcc9d7944090d528486ebaee1, type: 3}
       propertyPath: m_RootOrder
@@ -621,7 +621,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 104122, guid: aea2a6cdcc9d7944090d528486ebaee1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1598764277}
   m_SourcePrefab: {fileID: 100100000, guid: aea2a6cdcc9d7944090d528486ebaee1, type: 3}
 --- !u!4 &1312232381 stripped
 Transform:
@@ -663,6 +667,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1598764276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 104122, guid: aea2a6cdcc9d7944090d528486ebaee1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1172877357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1598764277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598764276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79eaada46eb44c538a4bf8c37dc333c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1824334821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 5924013827781158161, guid: cdcb19fde9e8cba40b7bff849baf2c1b,
         type: 3}
       propertyPath: m_Name
-      value: obstacle
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 5924013827781158164, guid: cdcb19fde9e8cba40b7bff849baf2c1b,
         type: 3}
