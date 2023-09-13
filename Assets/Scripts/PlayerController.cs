@@ -31,8 +31,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddRelativeForce(Vector3.forward * speed * verticalInput * 500);
+        rb.AddRelativeForce(Vector3.forward * speed * verticalInput * 500);           // * 500 added to give a balance of the force with realism
         transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
+        Scorekeeper.Instance.AddToScore(verticalInput);
     }
 
     // Called from PlayerActionInput when user presses WASD or arrow keys
@@ -40,5 +41,13 @@ public class PlayerController : MonoBehaviour
     {
         verticalInput = input.Get<Vector2>().y;
         horizontalInput = input.Get<Vector2>().x;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacles"))
+        {
+            Scorekeeper.Instance.SubtractFromScore();
+        }
     }
 }
