@@ -6,11 +6,13 @@ using TMPro;
 public class RandomWordGenerator : MonoBehaviour
 {
     public TextMeshProUGUI textMeshPro;
-    public List<string> wordList;
+    private List<string> wordList;
+
+    // Reference to the DeliveryManager script.
+    public DeliveryManager deliveryManager;
 
     private void Start()
     {
-        // Initialize your list of words.
         wordList = new List<string>
         {
             "Red Buildings",
@@ -24,11 +26,9 @@ public class RandomWordGenerator : MonoBehaviour
             "Stadiums",
             "Drug Stores",
             "Factories",
-            // Add more words as needed.
         };
 
-
-        // Generate and display a random word.
+        // Generate and display random words.
         GenerateRandomWords(5);
     }
 
@@ -48,8 +48,11 @@ public class RandomWordGenerator : MonoBehaviour
             randomWords.Add(randomWord);
         }
 
-        // Join the random words with newline characters and update the TextMeshPro text.
+        // Display the generated building names using TextMeshPro.
         textMeshPro.text = string.Join("\n", randomWords);
+
+        // Pass the generated random building names to the DeliveryManager.
+        deliveryManager.SetBuildingNames(randomWords);
     }
 
     private string GetRandomWord()
@@ -58,7 +61,7 @@ public class RandomWordGenerator : MonoBehaviour
         {
             int randomIndex = Random.Range(0, wordList.Count);
             string randomWord = wordList[randomIndex];
-            wordList.RemoveAt(randomIndex); // Remove the word to avoid duplicates.
+            wordList.RemoveAt(randomIndex);
             return randomWord;
         }
         else
