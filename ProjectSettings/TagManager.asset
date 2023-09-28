@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Delivery Areas
+  - Yellow Houses
+  - Red Buildings
+  - Red Houses
+  - Blue Houses
+  - Coke Machines
+  - Shops
+  - Yellow Buildings
+  - Green Houses
+  - Stadiums
+  - Drug Stores
+  - Factories
   layers:
   - Default
   - TransparentFX

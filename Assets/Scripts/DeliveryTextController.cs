@@ -6,34 +6,52 @@ using TMPro;
 public class DeliveryTextController : MonoBehaviour
 {
     public TextMeshProUGUI textMeshPro;
-    public float displayDuration = 1.0f; // Adjust the duration (in seconds) for how long the text will stay on screen.
+    public RandomWordGenerator rwg;
+    public float displayDuration = 1.0f;
     private bool isDisplaying = false;
-    private DeliveryManager deliveryManager; // Reference to the DeliveryManager.
+    private int count = 0;
+    //private string generatedTag; // Store the generated tag (building name).
 
-    private void Start()
+    public void SetGeneratedTag(string tag)
     {
-        // Find the DeliveryManager in the scene.
-        deliveryManager = FindObjectOfType<DeliveryManager>();
+        //generatedTag = tag;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Delivery Areas")) 
+        Debug.Log("Tag of collision: " + other.tag);
+        Debug.Log("Tag Generated: " + rwg.randomWords[count]);
+        if (other.CompareTag(rwg.randomWords[count])) // Compare with the generated tag.
         {
             if (!isDisplaying)
             {
-                if (deliveryManager != null)
-                {
-                    deliveryManager.DeliverTo(textMeshPro.text);
-                }
+                textMeshPro.text = "You have successfully delivered a package to " + rwg.randomWords[count];
                 isDisplaying = true;
-                textMeshPro.text = "You have successfully delivered a package!";
+                Invoke("HideText", displayDuration);
+                if (count < rwg.randomWords.Count)
+                {
+                    count++;
+                }
+            }
+        }
+        else
+        {
+            if (!isDisplaying)
+            {
+                textMeshPro.text = "Sorry! You delivered to the wrong destination.";
+                isDisplaying = true;
                 Invoke("HideText", displayDuration);
             }
         }
     }
 
     private void HideText()
+    {
+
+    
+    }
+
+    private void OnTriggerExit(Collider other)
     {
         textMeshPro.text = "";
         isDisplaying = false;

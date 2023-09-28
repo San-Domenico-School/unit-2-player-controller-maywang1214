@@ -6,13 +6,14 @@ using TMPro;
 public class RandomWordGenerator : MonoBehaviour
 {
     public TextMeshProUGUI textMeshPro;
-    private List<string> wordList;
+    public List<string> wordList;
+    public List<string> randomWords;
 
     // Reference to the DeliveryManager script.
-    public DeliveryManager deliveryManager;
+    //public DeliveryTextController deliveryTextController; // Reference to the DeliveryTextController.
 
     private void Start()
-    {
+    { 
         wordList = new List<string>
         {
             "Red Buildings",
@@ -40,22 +41,27 @@ public class RandomWordGenerator : MonoBehaviour
             return;
         }
 
-        List<string> randomWords = new List<string>();
+        randomWords = new List<string>();
+        string screenText = "";
 
         for (int i = 0; i < count; i++)
         {
             string randomWord = GetRandomWord();
             randomWords.Add(randomWord);
+            screenText += randomWord + "\n";
         }
 
         // Display the generated building names using TextMeshPro.
-        textMeshPro.text = string.Join("\n", randomWords);
+        textMeshPro.text = screenText;
 
-        // Pass the generated random building names to the DeliveryManager.
-        deliveryManager.SetBuildingNames(randomWords);
+        /* Pass the generated tag (building name) to the DeliveryTextController.
+        if (deliveryTextController != null)
+        {
+            deliveryTextController.SetGeneratedTag(randomWords[0]); // Assuming you want the first word/tag.
+        } */
     }
 
-    private string GetRandomWord()
+    public string GetRandomWord()
     {
         if (wordList.Count > 0)
         {
