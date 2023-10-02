@@ -38,7 +38,7 @@ public class DeliveryTextController : MonoBehaviour
         {
             if (!isDisplaying)
             {
-                textMeshPro.text = "Sorry! You delivered to the wrong destination.";
+                textMeshPro.text = "Sorry! You delivered to the wrong destination";
                 isDisplaying = true;
                 Invoke("HideText", displayDuration);
             }
